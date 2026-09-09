@@ -30,4 +30,4 @@ Tests run automatically on push/PR to `main` via [GitHub Actions](.github/workfl
 
 ## Notes
 
-The site under test has a real backend — submitting the "add expense" form persists data. Tests use unique, timestamped titles to avoid collisions between runs.
+Added expenses are only kept in the app's in-memory state (no backend persistence), so submitting the "add expense" form during tests doesn't leave any lasting data. Tests still use unique, timestamped titles as good practice to avoid collisions when tests run in parallel.
