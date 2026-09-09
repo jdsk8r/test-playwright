@@ -3,7 +3,10 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  reporter: 'html',
+  reporter: [
+    ['list', { printSteps: true, printFailuresInline: true }],
+    ['html', { open: 'never' }],
+  ],
   use: {
     baseURL: 'https://expenses-react.sanchezrolfsen.no/',
     trace: 'on-first-retry',
