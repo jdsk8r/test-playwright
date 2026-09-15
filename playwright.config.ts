@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  timeout: 30_000,
+  globalTimeout: 10 * 60 * 1000,
   fullyParallel: true,
   reporter: [
     ['list', { printSteps: true, printFailuresInline: true }],
@@ -9,7 +11,9 @@ export default defineConfig({
   ],
   use: {
     baseURL: 'https://expenses-react.sanchezrolfsen.no/',
-    trace: 'on-first-retry',
+    trace: 'on',
+    testIdAttribute: "cy-data-selector",
+    actionTimeout: 10_000,
   },
   projects: [
     {

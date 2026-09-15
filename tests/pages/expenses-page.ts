@@ -14,15 +14,15 @@ export class ExpensesPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.addNewExpenseButton = page.locator('[cy-data-selector="add-new-expense"]');
-    this.newExpenseForm = page.locator('[cy-data-selector="new-expense-form"]');
-    this.newExpenseTitle = page.locator('[cy-data-selector="new-expense-title"]');
-    this.newExpenseAmount = page.locator('[cy-data-selector="new-expense-amount"]');
-    this.newExpenseDate = page.locator('[cy-data-selector="new-expense-date"]');
-    this.addExpenseButton = page.locator('[cy-data-selector="add-expense"]');
-    this.cancelButton = page.locator('[cy-data-selector="cancel"]');
-    this.expenseItems = page.locator('[cy-data-selector="expense-item"]');
-    this.yearFilter = page.locator('[cy-data-selector="year-filter"]');
+    this.addNewExpenseButton = page.getByTestId("add-new-expense");
+    this.newExpenseForm = page.getByTestId("new-expense-form");
+    this.newExpenseTitle = page.getByTestId("new-expense-title");
+    this.newExpenseAmount = page.getByTestId("new-expense-amount");
+    this.newExpenseDate = page.getByTestId("new-expense-date");
+    this.addExpenseButton = page.getByTestId("add-expense");
+    this.cancelButton = page.getByTestId("cancel");
+    this.expenseItems = page.getByTestId("expense-item");
+    this.yearFilter = page.getByTestId("year-filter");
   }
 
   async goto() {
@@ -45,7 +45,7 @@ export class ExpensesPage {
 
   expenseItemByTitle(title: string): Locator {
     return this.expenseItems.filter({
-      has: this.page.locator('[cy-data-selector="expenseDescription"]', { hasText: title }),
+      has: this.page.getByTestId("expenseDescription").filter({ hasText: title }),
     });
   }
 
